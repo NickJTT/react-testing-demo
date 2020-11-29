@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import style from './Headline.module.scss';
+import PropTypes from 'prop-types';
 
 export default class Headline extends Component {
-  // eslint-disable-next-line
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { header, description } = this.props;
 
@@ -18,3 +14,15 @@ export default class Headline extends Component {
     </div>;
   }
 }
+
+Headline.propTypes = {
+  header: PropTypes.string,
+  description: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    age: PropTypes.number,
+    onlineStatus: PropTypes.bool
+  }))
+};
