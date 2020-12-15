@@ -25,10 +25,10 @@ export default connect(mapStateToProps, { fetchPosts }) (function App({ fetchPos
 
   const configButton = { buttonText: 'Get Posts', emitEvent: fetch };
 
-  return <>
+  return <div data-test = 'app'>
     <Header/>
     <Headline header = 'Posts' description = 'Click the button to render posts' data = { data }/>
     <Button { ...configButton }/>
     { posts?.length > 0 && posts.map(post => <Post key = { post.id } title = { post.title } description = { post.body }/>) }
-  </>;
+  </div>;
 });
