@@ -25,7 +25,7 @@ describe('App Component', () => {
         body: 'Some Text 3'
       }]
     }
-    wrapper = setUp();
+    wrapper = setUp(initialState);
   });
 
   it('renders without errors', () => {
