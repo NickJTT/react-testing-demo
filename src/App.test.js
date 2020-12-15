@@ -15,12 +15,15 @@ describe('App Component', () => {
   beforeEach(() => {
     const initialState = {
       posts: [{
+        id: 1,
         title: 'Example Title 1',
         body: 'Some Text 1'
       },{
+        id: 2,
         title: 'Example Title 2',
         body: 'Some Text 2'
       },{
+        id: 3,
         title: 'Example Title 3',
         body: 'Some Text 3'
       }]
