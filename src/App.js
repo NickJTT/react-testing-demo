@@ -4,7 +4,7 @@ import Button from './components/Button/Button';
 import Post from './components/Post/Post';
 import { connect } from 'react-redux';
 import { fetchPosts } from './actions';
-import React from 'react';
+import React, { useState } from 'react';
 
 const data = [{
   firstName: 'Nick',
@@ -19,8 +19,15 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { fetchPosts }) (function App({ fetchPosts, posts }) {
+  const [hideButton, setHideButton] = useState(false);
+
   const fetch = () => {
     fetchPosts();
+    buttonHide();
+  }
+
+  const buttonHide = () => {
+    setHideButton(true);
   }
 
   const configButton = { buttonText: 'Get Posts', emitEvent: fetch };
@@ -28,7 +35,7 @@ export default connect(mapStateToProps, { fetchPosts }) (function App({ fetchPos
   return <div data-test = 'app'>
     <Header/>
     <Headline header = 'Posts' description = 'Click the button to render posts' data = { data }/>
-    <Button { ...configButton }/>
+    { !hideButton && <Button { ...configButton }/> }
     { posts?.length > 0 && posts.map(post => <Post key = { post.id } title = { post.title } description = { post.body }/>) }
   </div>;
 });
